@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 1 lesson</title>
+  <style>
+    @keyframes showText {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .animation {
+      animation: showText 1s ease-in-out;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+
+    <h2>Задание 1</h2>
+    {{ message }}
+
+    <hr>
+    <h2>Задание 2</h2>
+    <p>Товаров в корзине {{ count }}</p>
+    <button @click="addProductToCart">{{ btnText }}</button>
+    <br>
+    <button @click="remProductFromCart">Удалить товар</button>
+
+    <hr>
+    <h2>Задание 3</h2>
+    <button @click="isCanBuy = !isCanBuy">Мне 14 лет</button>
+    <p v-show="isCanBuy">Вы можете заказать товар</p>
+    <br>
+    <button @click="isCantBuy = !isCantBuy">Мне нет 14 лет</button>
+    <p v-show="isCantBuy">Доступ закрыт</p>
+
+    <hr>
+    <h2>Задание 4</h2>
+    <button @click="isShowMore = !isShowMore">Показать еще</button>
+    <p class="animation" v-if="isShowMore">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit aliquid
+      quisquam voluptate
+      totam necessitatibus tenetur maxime minima corrupti sapiente amet.</p>
+
+    <hr>
+    <h2>Задание 5</h2>
+    <button @click="generateNum">Сгенерировать число</button>
+    <h1> {{ generateNumber }} </h1>
+    <p v-if="generateNumber < 5">Число меньше 5</p>
+    <p v-else-if="generateNumber >= 5 && generateNumber<= 9">Число от 5 до 9</p>
+    <p v-else>Число равно 10</p>
+
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const HelloVueApp = {
+      data() {
+        return {
+          message: 'Привет Vue!!',
+          count: 0,
+          btnText: 'Купить',
+          isCanBuy: false,
+          isCantBuy: false,
+          isShowMore: false,
+          generateNumber: null,
+        };
+      },
+      methods: {
+        addCount() {
+          if (this.count < 1) {
+            this.count++;
+          }
+        },
+        decCount() {
+          if (this.count !== 0) {
+            this.count--;
+          }
+        },
+        changeBtnText() {
+          if (this.count < 1) {
+            this.btnText = 'Купить';
+          } else {
+            this.btnText = 'Товар в корзине';
+          }
+        },
+        addProductToCart() {
+          this.addCount();
+          this.changeBtnText();
+        },
+        remProductFromCart() {
+          this.decCount();
+          this.changeBtnText();
+        },
+        generateNum() {
+          this.generateNumber = Math.floor(Math.random() * 10 + 1);
+        },
+      },
+    };
+
+    Vue.createApp(HelloVueApp).mount('#app');
+  </script>
+</body>
+
+</html>
