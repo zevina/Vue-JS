@@ -34,35 +34,36 @@
             </table>
 
         </div>
-        <script src="https://unpkg.com/vue@next"></script>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
 
-        <script>
-            const App = {
-                data() {
-                    return {
-                        products: [
-                            { id: 2, productName: "Кресло", price: 15000 },
-                            { id: 3, productName: "Кровать", price: 35000 },
-                            { id: 4, productName: "Шкаф", price: 28000 },
-                            { id: 1, productName: "Диван", price: 50000 },
-                            { id: 5, productName: "Стол", price: 24000 },
-                            { id: 6, productName: "Тумба", price: 3000 },
-                            { id: 7, productName: "Пуф", price: 5000 },
-                            { id: 8, productName: "Стул", price: 2000 },
-                        ],
-                    };
+    <script>
+        const App = {
+            data() {
+                return {
+                    products: [
+                        { id: 2, productName: "Кресло", price: 15000 },
+                        { id: 3, productName: "Кровать", price: 35000 },
+                        { id: 4, productName: "Шкаф", price: 28000 },
+                        { id: 1, productName: "Диван", price: 50000 },
+                        { id: 5, productName: "Стол", price: 24000 },
+                        { id: 6, productName: "Тумба", price: 3000 },
+                        { id: 7, productName: "Пуф", price: 5000 },
+                        { id: 8, productName: "Стул", price: 2000 },
+                    ],
+                };
+            },
+            methods: {
+                sortArrayUp() {
+                    this.products = this.products.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));;
                 },
-                methods: {
-                    sortArrayUp() {
-                        this.products = this.products.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));;
-                    },
-                    sortArrayDown() {
-                        this.products = this.products.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));;
-                    }
-                },
-            };
-            Vue.createApp(App).mount("#app");
-        </script>
+                sortArrayDown() {
+                    this.products = this.products.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));;
+                }
+            },
+        };
+        Vue.createApp(App).mount("#app");
+    </script>
 </body>
 
 </html>
