@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework 2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <!-- Вы разрабатываете приложение для отображения и сортировки списка товаров. 
+                У вас есть массив объектов products, где каждый объект представляет товар с его названием и ценой. 
+                Вам необходимо отобразить список товаров и предоставить пользователю возможность 
+                сортировать товары по цене (по возрастанию и по убыванию). -->
+            <h2>Список товаров</h2>
+            <button @click="sortArrayUp" class="btn">Сортировать по возрастанию &#129121</button>
+            <button @click="sortArrayDown" class="btn">Сортировать по убыванию &#129123</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="table__heading">Товар</th>
+                        <th class="table__heading">Цена</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="product in products" :key="product.id">
+                        <td class="table__data">{{ product.productName }}</td>
+                        <td class="table__data">{{ product.price }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+
+        <script>
+            const App = {
+                data() {
+                    return {
+                        products: [
+                            { id: 2, productName: "Кресло", price: 15000 },
+                            { id: 3, productName: "Кровать", price: 35000 },
+                            { id: 4, productName: "Шкаф", price: 28000 },
+                            { id: 1, productName: "Диван", price: 50000 },
+                            { id: 5, productName: "Стол", price: 24000 },
+                            { id: 6, productName: "Тумба", price: 3000 },
+                            { id: 7, productName: "Пуф", price: 5000 },
+                            { id: 8, productName: "Стул", price: 2000 },
+                        ],
+                    };
+                },
+                methods: {
+                    sortArrayUp() {
+                        this.products = this.products.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));;
+                    },
+                    sortArrayDown() {
+                        this.products = this.products.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));;
+                    }
+                },
+            };
+            Vue.createApp(App).mount("#app");
+        </script>
+</body>
+
+</html>
