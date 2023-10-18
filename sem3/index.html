@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="main.js"></script> -->
+    <script src="components/counter.js"></script>
+    <script src="components/list.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Задание 1
+        Создание простого счетчика: Создайте компонент счетчика, который имеет кнопку "+" и кнопку "-", и
+        отображает текущее значение счетчика. При нажатии на кнопки счетчик должен увеличиваться или уменьшаться
+        соответственно -->
+
+        <counter></counter>
+        <hr>
+
+        <!-- Задание 2
+        Создайте компонент списка дел, в котором можно добавлять и удалять элементы. 
+        Каждый элемент списка должен иметь кнопку удаления, при нажатии на которую элемент списка будет удаляться. -->
+        <list></list>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const App = {
+            components: {
+                counter,
+                list,
+            }
+        };
+
+        Vue.createApp(App).mount("#app");
+    </script>
+
+</body>
+
+</html>
